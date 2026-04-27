@@ -1,14 +1,14 @@
 cask "soll" do
-  version "0.2.8"
+  version "0.2.9"
 
   on_arm do
     url "https://github.com/mithun-builds/soll/releases/download/v#{version}/Soll-v#{version}-apple-silicon.dmg"
-    sha256 "97626a1a101ac940ca7f62e7feaacfbe4e71877c3df7c406eb76a31401ed8df1"
+    sha256 "fc7d4672297705aeaa6cb0c529ec0855c3a3b40890ce3453c38daf02eae35ec0"
   end
 
   on_intel do
     url "https://github.com/mithun-builds/soll/releases/download/v#{version}/Soll-v#{version}-intel.dmg"
-    sha256 "08f30336d13647322af4aa5af45361e06c4c9e2b236901b9c37ba409d1278ee3"
+    sha256 "25b2f3623baf773b4e6e0e9bcbaa8642882789336001353222800c7ed83f32f1"
   end
 
   name "Soll"
@@ -23,6 +23,12 @@ cask "soll" do
       args: ["-dr", "com.apple.quarantine", "#{appdir}/Soll.app"],
       sudo: false
   end
+
+  # Brew runs this on `uninstall --cask` AND on `upgrade --cask`
+  # (upgrade is uninstall-then-install under the hood). Quitting the
+  # running app first means the user can run `brew upgrade --cask soll`
+  # while Soll is open and brew handles it cleanly.
+  uninstall quit: "com.soll.app"
 
   zap trash: [
     "~/Library/Application Support/com.soll.app",
