@@ -1,14 +1,14 @@
 cask "soll" do
-  version "0.3.0"
+  version "0.3.1"
 
   on_arm do
     url "https://github.com/mithun-builds/soll/releases/download/v#{version}/Soll-v#{version}-apple-silicon.dmg"
-    sha256 "f691928f98fb9455ab4dbcb51a7b289286f7b95e658d00742273d9ef77977513"
+    sha256 "9c15a6a8bea750ee30b688edabacebc8dd87330961046b8db1559f78c8763643"
   end
 
   on_intel do
     url "https://github.com/mithun-builds/soll/releases/download/v#{version}/Soll-v#{version}-intel.dmg"
-    sha256 "c4283112e4b2a05a112299716aff6c0ce9b7562ba6bdc47314b521c3a8ee5638"
+    sha256 "55014397cd4ba3b8e08293993b526123e0c0b2a7dce383dcd37baade6c3643e4"
   end
 
   name "Soll"
